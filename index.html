@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Omar Mohamed | Service Desk Engineer & IT Specialist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: rgba(17, 24, 39, 0.75);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --primary: #38bdf8;
+      --primary-glow: rgba(56, 189, 248, 0.25);
+      --accent: #10b981;
+      --text: #f3f4f6;
+      --text-muted: #9ca3af;
+      --code-font: 'JetBrains Mono', monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    header {
+      padding: 40px 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--card-border);
+    }
+    .logo {
+      font-weight: 800;
+      font-size: 1.25rem;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      color: #34d399;
+      border-radius: 9999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      background: #10b981;
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
+    
+    .hero {
+      padding: 70px 0 50px;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 40px;
+      align-items: center;
+    }
+    .hero-badge {
+      display: inline-block;
+      padding: 6px 14px;
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: 6px;
+      font-family: var(--code-font);
+      font-size: 0.85rem;
+      color: var(--primary);
+      margin-bottom: 16px;
+    }
+    h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+    }
+    .hero p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      margin-bottom: 24px;
+    }
+    .btn-group { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: #0b1120;
+    }
+    .btn-primary:hover {
+      box-shadow: 0 0 20px var(--primary-glow);
+      transform: translateY(-2px);
+    }
+    .btn-outline {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text);
+      border: 1px solid var(--card-border);
+    }
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-2px);
+    }
+    
+    .terminal-box {
+      background: #0f172a;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 12px;
+      padding: 20px;
+      font-family: var(--code-font);
+      font-size: 0.85rem;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    }
+    .terminal-header {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+    .t-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .t-red { background: #ef4444; }
+    .t-yellow { background: #f59e0b; }
+    .t-green { background: #10b981; }
+    .t-line { margin-bottom: 8px; color: #cbd5e1; }
+    .t-prompt { color: var(--primary); }
+    .t-val { color: #34d399; }
+
+    .section-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin: 60px 0 30px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 1px solid var(--card-border);
+      padding-bottom: 14px;
+    }
+    .section-title i { color: var(--primary); }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 24px;
+      backdrop-filter: blur(10px);
+      transition: all 0.25s ease;
+    }
+    .card:hover {
+      border-color: rgba(56, 189, 248, 0.4);
+      transform: translateY(-3px);
+    }
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 12px;
+    }
+    .company { font-size: 1.2rem; font-weight: 700; color: #fff; }
+    .role { color: var(--primary); font-size: 0.95rem; font-weight: 600; margin-top: 2px; }
+    .date-tag {
+      font-size: 0.8rem;
+      font-family: var(--code-font);
+      background: rgba(255,255,255,0.06);
+      padding: 4px 8px;
+      border-radius: 4px;
+      color: var(--text-muted);
+    }
+    .card ul {
+      list-style-type: none;
+      margin-top: 14px;
+    }
+    .card ul li {
+      position: relative;
+      padding-left: 20px;
+      font-size: 0.9rem;
+      color: #d1d5db;
+      margin-bottom: 8px;
+    }
+    .card ul li::before {
+      content: "▹";
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+      font-weight: bold;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+    }
+    .skill-card {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 16px;
+    }
+    .skill-title {
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-bottom: 8px;
+      color: #f8fafc;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .skill-card p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    footer {
+      margin-top: 80px;
+      padding: 40px 0;
+      border-top: 1px solid var(--card-border);
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .hero { grid-template-columns: 1fr; }
+      h1 { font-size: 2.2rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">
+        <i class="fa-solid fa-terminal" style="color:var(--primary);"></i>
+        <span>omar.kamel</span>
+      </div>
+      <div class="status-badge">
+        <span class="status-dot"></span> Available for Opportunities
+      </div>
+    </header>
+
+    <section class="hero">
+      <div>
+        <div class="hero-badge">SYSTEMS & SERVICE DESK ENGINEER</div>
+        <h1>Omar Mohamed Kamel</h1>
+        <p>Results-driven IT Specialist & Service Desk Engineer with 4+ years securing enterprise endpoints, managing ITIL incidents via Odoo/Zoho, and administering Active Directory & Microsoft Entra ID.</p>
+        <div class="btn-group">
+          <a href="https://www.linkedin.com/in/omarkamellll/" target="_blank" class="btn btn-primary">
+            <i class="fa-brands fa-linkedin"></i> LinkedIn Profile
+          </a>
+          <a href="mailto:omarkamel3598@gmail.com" class="btn btn-outline">
+            <i class="fa-solid fa-envelope"></i> Contact Me
+          </a>
+          <button onclick="window.print()" class="btn btn-outline">
+            <i class="fa-solid fa-print"></i> Print CV
+          </button>
+        </div>
+      </div>
+
+      <div class="terminal-box">
+        <div class="terminal-header">
+          <span class="t-dot t-red"></span>
+          <span class="t-dot t-yellow"></span>
+          <span class="t-dot t-green"></span>
+        </div>
+        <div class="t-line"><span class="t-prompt">omarkamel@workstation:~$</span> whoami</div>
+        <div class="t-line"><span class="t-val">Omar Kamel (Service Desk Engineer & System Administrator)</span></div>
+        <div class="t-line"><span class="t-prompt">omarkamel@workstation:~$</span> current_status</div>
+        <div class="t-line"><span class="t-val">National Technology Group (NTG) - Active</span></div>
+        <div class="t-line"><span class="t-prompt">omarkamel@workstation:~$</span> military_service</div>
+        <div class="t-line"><span class="t-val">Completed (Exempt / Finalized)</span></div>
+        <div class="t-line"><span class="t-prompt">omarkamel@workstation:~$</span> core_stack</div>
+        <div class="t-line">Odoo Helpdesk | Kaspersky EDR | M365 | Active Directory | CCNA</div>
+        <div class="t-line"><span class="t-prompt">omarkamel@workstation:~$</span> location</div>
+        <div class="t-line">Giza / Cairo, Egypt (+20 114 091 6099)</div>
+        <div class="t-line" style="margin-top: 14px; padding-top: 10px; border-top: 1px dashed rgba(255,255,255,0.15);">
+          <span class="t-prompt">omarkamel@workstation:~$</span> get-resume --format=pdf
+        </div>
+        <div style="margin-top: 6px;">
+          <a href="#" onclick="window.print(); return false;" style="display: inline-flex; align-items: center; gap: 6px; background: rgba(56, 189, 248, 0.15); border: 1px solid var(--primary); color: #fff; padding: 6px 14px; border-radius: 6px; font-family: var(--code-font); font-size: 0.8rem; text-decoration: none; cursor: pointer; transition: 0.2s;">
+            <i class="fa-solid fa-file-arrow-down" style="color:var(--primary);"></i> [Download / Print CV]
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <h2 class="section-title"><i class="fa-solid fa-briefcase"></i> Work Experience</h2>
+    <div class="grid-2">
+      
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="company">National Technology Group (NTG)</div>
+            <div class="role">Service Desk Engineer</div>
+          </div>
+          <div class="date-tag">Jun 2026 – Present</div>
+        </div>
+        <ul>
+          <li>Primary technical point of contact managing Tier 1/Tier 2 incident workflows via <strong>Odoo Ticketing System</strong>.</li>
+          <li>Enforce corporate endpoint protection and virus mitigations via <strong>Kaspersky Endpoint Security</strong>.</li>
+          <li>User lifecycle management and Role-Based Access Control (RBAC) via Active Directory and Azure AD.</li>
+          <li>Troubleshoot enterprise LAN, VLAN, VPN, and workstation operating systems under strict SLAs.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="company">Basata Holding (Fintech)</div>
+            <div class="role">IT Specialist</div>
+          </div>
+          <div class="date-tag">Oct 2024 – Jun 2026</div>
+        </div>
+        <ul>
+          <li>Delivered critical technical support in a high-demand fintech environment with high data security standards.</li>
+          <li>Monitored and maintained workstation endpoint security posture using <strong>Kaspersky Endpoint Security</strong>.</li>
+          <li>Managed incident queues through Zoho Desk, maintaining accurate diagnosis and timely resolutions.</li>
+          <li>Performed secure system imaging, OS provisioning, and workstation hardware upgrades.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="company">GNETWORX Company</div>
+            <div class="role">IT Specialist (Outsourced Support)</div>
+          </div>
+          <div class="date-tag">Nov 2023 – Oct 2024</div>
+        </div>
+        <ul>
+          <li>Provided dedicated outsourced technical support across multiple enterprise clients (Centrada, Ezz Developments).</li>
+          <li>Supported specialized engineering applications (Autodesk AutoCAD/Revit, Adobe CC).</li>
+          <li>Managed user directory privileges, group policies (GPO), and PBX hotline telephony systems.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="company">MCG Mentor Consulting Group</div>
+            <div class="role">IT Helpdesk Specialist</div>
+          </div>
+          <div class="date-tag">May 2023 – Nov 2023</div>
+        </div>
+        <ul>
+          <li>Installed, maintained, and configured computer hardware, peripheral builds, and OS images.</li>
+          <li>Joined user workstations to domain controllers and maintained technical diagnostic reports.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="company">Egyptian Armed Forces</div>
+            <div class="role">IT Helpdesk Specialist (Military Service)</div>
+          </div>
+          <div class="date-tag">Oct 2021 – Dec 2022</div>
+        </div>
+        <ul>
+          <li>Maintained workstation reliability, system deployment, and operational software support.</li>
+          <li>Configured peripherals, diagnostic logs, and resolved internal LAN connectivity issues.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="company">Resala Charity Organization</div>
+            <div class="role">IT Helpdesk Specialist</div>
+          </div>
+          <div class="date-tag">Dec 2019 – Oct 2021</div>
+        </div>
+        <ul>
+          <li>Maintained computers, printers, and core OS across organization offices.</li>
+          <li>Created user accounts, managed local permissions, and handled on-site hardware repairs.</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- SKILLS -->
+    <h2 class="section-title"><i class="fa-solid fa-layer-group"></i> Core Technical Competencies</h2>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-title"><i class="fa-solid fa-headset" style="color:var(--primary);"></i> Service Desk & SLAs</div>
+        <p>Odoo Helpdesk, Zoho Desk, ITIL Incident Workflows, Ticket Escalations, Knowledgebase documentation.</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-title"><i class="fa-solid fa-shield-halved" style="color:var(--primary);"></i> Endpoint Security</div>
+        <p>Kaspersky Endpoint Security, Role-Based Access Control (RBAC), Endpoint Compliance, Anti-malware isolation.</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-title"><i class="fa-solid fa-cloud" style="color:var(--primary);"></i> Identity & Systems</div>
+        <p>Active Directory (AD DS), Microsoft Entra ID (Azure AD), Group Policy (GPO), Windows Server, M365 Admin.</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-title"><i class="fa-solid fa-network-wired" style="color:var(--primary);"></i> Network Infrastructure</div>
+        <p>CCNA Fundamentals, TCP/IP, DNS, DHCP, VLANs, VPN Configuration, Routing & Switching.</p>
+      </div>
+    </div>
+
+    <!-- EDUCATION & CERTS -->
+    <h2 class="section-title"><i class="fa-solid fa-certificate"></i> Education & Certifications</h2>
+    <div class="grid-2">
+      <div class="card">
+        <div class="skill-title" style="font-size:1.1rem; color:var(--primary);"><i class="fa-solid fa-graduation-cap"></i> Education</div>
+        <p style="font-weight:700; color:#fff; margin-top:8px;">Faculty of Commerce, Economy & Foreign Trade</p>
+        <p style="color:var(--text-muted); font-size:0.9rem;">Helwan University (2017 – 2021) | Grade: Good</p>
+      </div>
+      <div class="card">
+        <div class="skill-title" style="font-size:1.1rem; color:var(--primary);"><i class="fa-solid fa-award"></i> Trainings & Certifications</div>
+        <ul style="margin-top:8px;">
+          <li>Microsoft 365: Enterprise Administrator (Training)</li>
+          <li>CCNA (Cisco Certified Network Associate) – AUC</li>
+          <li>MCSA (Microsoft Certified Solutions Associate)</li>
+          <li>Google IT Support Professional Certificate – Coursera</li>
+        </ul>
+      </div>
+    </div>
+
+    <footer>
+      <p>© 2026 Omar Mohamed Mohamed Kamel | Service Desk Engineer | Built for High-Security Enterprise Environments</p>
+    </footer>
+  </div>
+</body>
+</html>
